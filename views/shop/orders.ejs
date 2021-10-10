@@ -16,7 +16,7 @@
                                 <% let totalPrice = 0; %> 
                                 <% order.products.forEach(p => { %>
                                     <li class="orders__products-item"><%= p.product.title %> (<%= p.quantity %>)</li>
-                                    <% totalPrice += p.product.price %> 
+                                    <% totalPrice += p.product.price * p.quantity %> 
                                 <% }); %>
                                 <p>Order total: <%= totalPrice %></p>
                             </ul>
