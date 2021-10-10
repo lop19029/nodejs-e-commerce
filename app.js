@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors')
+const PORT = process.env.PORT || 5000
 
 const errorController = require('./controllers/error');
 const User = require('./models/user');
@@ -63,7 +64,7 @@ mongoose.connect(MONGODB_URL, options)
             user.save();
         }
     })
-    app.listen(process.env.PORT || 5000)
+    app.listen(PORT);
 }).catch(err => {
     console.log(err);
 });
