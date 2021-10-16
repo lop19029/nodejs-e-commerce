@@ -75,6 +75,11 @@ exports.postSignup = (req, res, next) => {
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
 
+    if(password != confirmPassword){
+        req.flash('error', 'Passwords must match.');
+        return res.redirect('/signup');
+    }
+
     User.findOne({email: email}) //check repeated users
     .then(userDoc => {
         if(userDoc) {
