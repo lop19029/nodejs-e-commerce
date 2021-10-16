@@ -18,7 +18,7 @@
                                     <li class="orders__products-item"><%= p.product.title %> (<%= p.quantity %>)</li>
                                     <% totalPrice += p.product.price * p.quantity %> 
                                 <% }); %>
-                                <p>Order total: <%= totalPrice %></p>
+                                <p>Order total: $<%= totalPrice %></p>
                             </ul>
                         </li>
                     <% }); %>
