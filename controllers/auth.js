@@ -190,6 +190,7 @@ exports.postReset = (req, res, next) => {
     crypto.randomBytes(32, (err, buffer)=> {
         if(err) {
             console.log(err);
+            req.flash('error', 'Something went wrong. Please try again');
             return res.redirect('/reset')
         }
         const token = buffer.toString('hex');
@@ -197,7 +198,7 @@ exports.postReset = (req, res, next) => {
         .then(user => {
             if(!user) {
                 req.flash('error', 'No account with that email found.');
-                return res.redirect('/')
+                return res.redirect('/reset')
             }
             user.resetToken = token;
             user.resetTokenExpiration = Date.now() + 3600000;
