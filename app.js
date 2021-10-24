@@ -8,7 +8,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 
-//const cors = require('cors')
+const cors = require('cors')
 const PORT = process.env.PORT || 5000
 
 const errorController = require('./controllers/error');
@@ -86,28 +86,28 @@ app.use((error, req, res, next) => {
     });
 });
 
-// const corsOptions = {
-//     origin: "https://nodejs-ecommerce-cse341.herokuapp.com/",
-//     optionsSuccessStatus: 200
-// };
+const corsOptions = {
+    origin: "https://nodejs-ecommerce-cse341.herokuapp.com/",
+    optionsSuccessStatus: 200
+};
 
-// For local environment only
-mongoose
-  .connect(MONGODB_URI)
-  .then(result => {
-    app.listen(PORT);
-  })
-  .catch(err => {
-    console.log(err);
-  });
-
-// app.use(cors(corsOptions));
-
-// const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://<username>:<username>@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
-
-// mongoose.connect(MONGODB_URL)
-// .then(result => {
+// // For local environment only
+// mongoose
+//   .connect(MONGODB_URI)
+//   .then(result => {
 //     app.listen(PORT);
-// }).catch(err => {
+//   })
+//   .catch(err => {
 //     console.log(err);
-// });
+//   });
+
+app.use(cors(corsOptions));
+
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://<username>:<username>@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
+
+mongoose.connect(MONGODB_URL)
+.then(result => {
+    app.listen(PORT);
+}).catch(err => {
+    console.log(err);
+});
