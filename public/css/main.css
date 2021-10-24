@@ -23,6 +23,12 @@ form {
   text-align: center;
 }
 
+.centered-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .image {
   height: 20rem;
 }
@@ -34,7 +40,7 @@ form {
 .main-header {
   width: 100%;
   height: 3.5rem;
-  background-color: #00695c;
+  background-color: #1A2D36;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
@@ -75,7 +81,7 @@ form {
 .main-header__item a.active,
 .main-header__item button:hover,
 .main-header__item button:active {
-  color: #ffeb3b;
+  color: #007DFE;
 }
 
 .mobile-nav {
@@ -126,7 +132,7 @@ form {
 .mobile-nav__item a.active,
 .mobile-nav__item button:hover,
 .mobile-nav__item button:active {
-  background: #00695c;
+  background: #1A2D36;
   color: white;
   border-radius: 3px;
 }
@@ -147,8 +153,8 @@ form {
 
 #side-menu-toggle:active,
 #side-menu-toggle:hover {
-  color: #ffeb3b;
-  border-color: #ffeb3b;
+  color: #007DFE;
+  border-color: #007DFE;
 }
 
 .backdrop {
@@ -208,8 +214,8 @@ form {
   padding: 0.25rem 1rem;
   text-decoration: none;
   font: inherit;
-  border: 1px solid #00695c;
-  color: #00695c;
+  border: 1px solid #1A2D36;
+  color: #1A2D36;
   background: white;
   border-radius: 3px;
   cursor: pointer;
@@ -217,7 +223,7 @@ form {
 
 .btn:hover,
 .btn:active {
-  background-color: #00695c;
+  background-color: #007DFE;
   color: white;
 }
 
@@ -235,10 +241,10 @@ form {
 .user-message {
   margin: auto;
   width: 90%;
-  border: 1px solid #4771fa;
+  border: 1px solid #007DFE;
   padding: 0.5rem;
   border-radius: 3px;
-  background: #b9c9ff;
+  background: #E0E0E0;
   text-align: center;
 }
 

@@ -1,5 +1,5 @@
 const express = require('express');
-const { check, body } = require('express-validator/check');
+const { check, body } = require('express-validator');
 
 const authController = require('../controllers/auth');
 const isAuth = require('../middleware/is-auth');
@@ -21,10 +21,9 @@ router.post('/login',
     .isEmail()
     .withMessage('Please enter a valid email address.')
     .normalizeEmail(),
-    body('password', 'Please enter a password with only numbers and text and at least 5 characters.')
-    .isLength({min: 5})
-    .isAlphanumeric()
-    .trim()
+    body("password", "Password must be at least 8 characters long, at least one uppercase, at least one lower case, at least one digit, and one special character")
+        .trim()
+        .matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, "i")
 ]
 ,authController.postLogin);
 
@@ -51,13 +50,9 @@ router.post(
             });
         })
         .normalizeEmail(),
-        body(
-            'password',
-            'Please enter a password with only numbers and text and at least 5 characters.'
-            )
-        .isLength({min: 5})
-        .isAlphanumeric()
-        .trim(),
+        body("password", "Password must be at least 8 characters long, at least one uppercase, at least one lower case, at least one digit, and one special character")
+        .trim()
+        .matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, "i"),
         body('confirmPassword').trim().custom((value, {req}) => {
             if (value !== req.body.password) {
                 throw new Error ('Passwords have to match');
